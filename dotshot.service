@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=%h/.local/bin/dotshot watch
+ExecStart=/usr/bin/dotshot watch
 Restart=on-failure
 
 [Install]

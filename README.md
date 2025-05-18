@@ -35,10 +35,24 @@ It helps keep your system's critical user-level config files in sync with a trac
 
 ### 📦 Installation
 
+#### From Source
+
 ```bash
 git clone https://github.com/ghostkellz/dotshot.git
 cd dotshot
 go build -o dotshot .
+```
+
+#### With PKGBUILD (Arch Linux)
+
+```bash
+makepkg -si
+```
+
+#### With install script
+
+```bash
+./install.sh
 ```
 
 ---
@@ -57,17 +71,49 @@ go build -o dotshot .
 ./dotshot sync
 
 # Show what would sync
-./dotshot sync --dry-run
+dotshot sync --dry-run
+
+# Watch for changes and auto-sync
+dotshot watch
+
+# Restore dotfiles from repo to original locations
+dotshot restore
+
+# Show what would sync and git status
+dotshot status
 
 # Commit and push changes
-./dotshot commit -m "Update nvim + wezterm"
+dotshot commit
+
+# Print systemd user service install instructions
+dotshot systemd-helper
+```
+
+---
+
+### ⚙️ Configuration
+
+- Default config location: `./config.yaml` or `~/.config/dotshot/config.yaml`
+- Example config: see `config.yaml` in the repo or `/usr/share/dotshot/config.yaml.example`
+- Exclude files: add an `exclude:` list to your config
+
+---
+
+### 🛡️ Systemd Integration
+
+To run dotshot as a background user service:
+
+```bash
+cp dotshot.service ~/.config/systemd/user/dotshot.service
+systemctl --user daemon-reload
+systemctl --user enable --now dotshot.service
+systemctl --user status dotshot.service
 ```
 
 ---
 
 ### 🔧 Planned Features
 
-- `watch` mode for auto-tracking changes
 - Automatic tagging/versioning
 - Integration with `ghostctl` as a subcommand
 - System snapshot metadata (hostname, kernel, date)
