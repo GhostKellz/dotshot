@@ -1,0 +1,17 @@
+# dotshot config file
+
+repo_root: "/data/projects"
+dotfiles:
+  nvim:
+    paths:
+      - ~/.config/nvim
+  wezterm:
+    paths:
+      - ~/.config/wezterm
+  zsh:
+    paths:
+      - ~/.zshrc
+      - ~/.zshrc.d/
+git:
+  auto_commit: true
+  commit_message: "dotshot: sync update"
