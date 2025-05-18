@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"runtime"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -24,6 +25,10 @@ func Execute() {
 }
 
 func init() {
+	if runtime.GOOS != "linux" {
+		fmt.Println("Warning: dotshot is designed for Linux/Arch. Some features may not work on other OSes.")
+	}
+
 	cobra.OnInitialize(initConfig)
 
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is ./config.yaml)")
