@@ -5,6 +5,10 @@ dotfiles:
   nvim:
     paths:
       - ~/.config/nvim
+
+  ghostty:
+    paths:
+      - ~/.config/ghostty
   wezterm:
     paths:
       - ~/.config/wezterm
@@ -12,6 +16,10 @@ dotfiles:
     paths:
       - ~/.zshrc
       - ~/.zshrc.d/
+  bash:
+    paths:
+      - ~/.bashrc
+        ~/.bash_profile
 git:
   auto_commit: true
   commit_message: "dotshot: sync update"
